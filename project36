@@ -1,0 +1,30 @@
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+names=['se-length', 'se-width','pe-length', 'pe-width', 'class' ]
+dataset= pd.read_excel('d:\\book2.xlsx',  names=names)
+print(dataset)
+X = dataset.to_numpy()[:,1:4]
+y = dataset.to_numpy()[:,4]
+
+from sklearn.tree import DecisionTreeRegressor
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+tree = DecisionTreeRegressor().fit(X_train,y_train)
+
+print("Training set accuracy: {:.3f}".format(tree.score(X_train, y_train)))
+print("Test set accuracy: {:.3f}".format(tree.score(X_test, y_test)))
+
+x=[[3, 2, 1]]
+dtree = tree.predict(x)
+print(dtree)
+
+percentageerror_tree=((y-dtree)/dtree)*100
+
+np.mean(percentageerror_tree)
+
+from sklearn.tree import export_graphviz
+export_graphviz(tree,out_file="tree.dot")
+
+
+

@@ -1,0 +1,17 @@
+from sklearn.datasets import load_breast_cancer
+cancer_data=load_breast_cancer()
+print(cancer_data)
+X=cancer_data.data
+Y=cancer_data.target
+print(X)
+print(Y)
+from sklearn import tree
+model=tree.DecisionTreeClassifier()
+model.fit(X,Y)
+y_predict=model.predict(X)
+print(y_predict)
+import matplotlib.pyplot as plt
+#plt.scatter(Y,y_predict)
+#plt.show()
+plt.scatter(X[:,0],X[:,1])
+plt.show()

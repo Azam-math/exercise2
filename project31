@@ -1,0 +1,6 @@
+from sklearn.linear_model import LinearRegression
+x=[[1000,2500,3000],[2000,2500,3500],[5000, 10000, 700]]
+y=[1700,2800,6900]
+regressor=LinearRegression()
+regressor=regressor.fit(x,y)
+print(regressor.coef_)

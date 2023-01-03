@@ -1,0 +1,20 @@
+from sklearn import linear_model
+import math
+trainx=[[1000,2500,3000],[2000,2500,3500],[5000, 10000, 700],[4500,3000,5600]]
+trainy=[1700,2800,6900,5400]
+testx=[[7000,1600,200],[2300,4500,1000]]
+testy=[7500,2000]
+l=len(testy)
+regressor=linear_model.LinearRegression()
+regressor.fit(trainx,trainy)
+y_hat=regressor.predict(testx)
+index=1
+s=0
+while(index< l):
+    sum=(y_hat[index]-testy[index])**2
+    s+=sum
+    index+=1
+mes=s/l
+print(regressor.coef_)
+print(y_hat)
+print(mes)

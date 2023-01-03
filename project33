@@ -1,0 +1,13 @@
+from sklearn import linear_model
+from sklearn.metrics import mean_squared_error
+trainx=[[1000,2500,3000],[2000,2500,3500],[5000, 10000, 700],[4500,3000,5600]]
+trainy=[1700,2800,6900,5400]
+testx=[[7000,1600,200],[2300,4500,1000]]
+testy=[7500,2000]
+regressor=linear_model.LinearRegression()
+regressor.fit(trainx,trainy)
+y_hat=regressor.predict(testx)
+print(y_hat)
+print(regressor.coef_)
+MSE=mean_squared_error(testy,y_hat)
+print(MSE)
